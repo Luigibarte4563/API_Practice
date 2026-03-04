@@ -1,6 +1,9 @@
 <?php
-$apiKey = "YOUR API KEY";
-$url = "";
+
+$lat = 16.01098805624789;
+$lon = 120.35562716887895;
+$apiKey = "689300a00e0d52fa77706b78c1b0a0de";
+$url = "https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey";
 
 $ch = curl_init($url);
 
@@ -29,6 +32,10 @@ if ($httpCode != 200) {
 
 $data = json_decode($response, true);
 
-header("Content-Type: application/json");
-echo json_encode($data, JSON_PRETTY_PRINT);
+// header("Content-Type: application/json");
+// echo json_encode($data, JSON_PRETTY_PRINT);
+
+echo $data['name'] . "<br>";
+echo $data['weather'][0]['main'] . "<br>";
+echo $data['weather'][0]['description'] . "<br>";
 ?>
